@@ -1,0 +1,34 @@
+import type { FastifyPluginAsync } from "fastify";
+import { analysisRoutes } from "../modules/analysis/analysis.routes";
+import { analyticsRoutes } from "../modules/analytics/analytics.routes";
+import { authRoutes } from "../modules/auth/auth.routes";
+import { casesRoutes } from "../modules/cases/cases.routes";
+import { clientsRoutes } from "../modules/clients/clients.routes";
+import { ctsrRoutes } from "../modules/ctsr/ctsr.routes";
+import { evidenceRoutes } from "../modules/evidence/evidence.routes";
+import { feedbackRoutes } from "../modules/feedback/feedback.routes";
+import { reportsRoutes } from "../modules/reports/reports.routes";
+import { scoringRoutes } from "../modules/scoring/scoring.routes";
+import { sessionsRoutes } from "../modules/sessions/sessions.routes";
+import { summaryRoutes } from "../modules/summary/summary.routes";
+import { systemRoutes } from "../modules/system/system.routes";
+import { transcriptsRoutes } from "../modules/transcripts/transcripts.routes";
+import { usersRoutes } from "../modules/users/users.routes";
+
+export const routes: FastifyPluginAsync = async (fastify) => {
+  await fastify.register(systemRoutes);
+  await fastify.register(authRoutes, { prefix: "/auth" });
+  await fastify.register(usersRoutes);
+  await fastify.register(clientsRoutes);
+  await fastify.register(casesRoutes);
+  await fastify.register(sessionsRoutes);
+  await fastify.register(transcriptsRoutes);
+  await fastify.register(analysisRoutes);
+  await fastify.register(evidenceRoutes);
+  await fastify.register(scoringRoutes);
+  await fastify.register(summaryRoutes);
+  await fastify.register(feedbackRoutes);
+  await fastify.register(reportsRoutes);
+  await fastify.register(ctsrRoutes);
+  await fastify.register(analyticsRoutes);
+};
